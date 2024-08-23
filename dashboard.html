@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Dashboard</h2>
+
+<form method="POST" action="{{ url_for('dashboard') }}">
+    <label for="location">Enter Location:</label>
+    <input type="text" name="location" id="location" required><br>
+    
+    <input type="submit" value="Get Weather">
+</form>
+
+{% if weather_data %}
+    <h3>Weather for {{ weather_data[2] }}</h3>
+    <p>Description: {{ weather_data[3] }}</p>
+    <p>Temperature: {{ weather_data[4] }}°C</p>
+    <p>Humidity: {{ weather_data[5] }}%</p>
+    <p>Feels Like: {{ weather_data[6] }}°C</p>
+{% else %}
+    <p>No weather data available.</p>
+{% endif %}
+{% endblock %}
